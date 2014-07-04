@@ -66,8 +66,10 @@ def main():
             'git_repo': url,
             'destination': os.path.normpath('%s/%s' % (bundle_dir, dest_folder)),
         }
+        print "Installing %s" % bundle
         status = commands.getstatusoutput(clone_command)
-        print clone_command, status
+        if status[0] is not 0:
+            print status[1]
 
 if __name__ == '__main__':
     main()
