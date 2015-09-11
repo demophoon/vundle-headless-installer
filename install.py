@@ -22,7 +22,7 @@ def get_git_repo(bundle_str):
 def main():
     # Find Bundles
     bundles = []
-    regex = re.compile('(?plugin|bundle)\s+\'(.*)\'', re.IGNORECASE)
+    regex = re.compile('(?:plugin|bundle)\s+\'(.*)\'', re.IGNORECASE)
     for vimrc_file in get_vimrc_locations():
         vimrc = open(vimrc_file, "r").read()
         bundles += re.findall(regex, vimrc)
