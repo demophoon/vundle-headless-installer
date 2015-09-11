@@ -22,9 +22,10 @@ def get_git_repo(bundle_str):
 def main():
     # Find Bundles
     bundles = []
+    regex = re.compile('(?plugin|bundle)\s+\'(.*)\'', re.IGNORECASE)
     for vimrc_file in get_vimrc_locations():
         vimrc = open(vimrc_file, "r").read()
-        bundles += re.findall(re.compile('bundle\s+\'(.*)\'', re.IGNORECASE), vimrc)
+        bundles += re.findall(regex, vimrc)
 
     # Create Bundle Directory for Vundle to install to
     bundle_dir = os.path.expandvars("$HOME/.vim/bundle/")
