@@ -36,7 +36,7 @@ def main():
     for bundle in set(bundles):
         url = get_git_repo(bundle)
         dest_folder = url.split("/")[-1].split(".git")[0]
-        clone_command = 'git clone --recursive %(git_repo)s %(destination)s' % {
+        clone_command = 'git clone --depth 1 --recursive %(git_repo)s %(destination)s' % {
             'git_repo': url,
             'destination': os.path.normpath('%s/%s' % (bundle_dir, dest_folder)),
         }
